@@ -1,0 +1,10 @@
+{
+  "nextId": 6,
+  "issues": [
+    {"id": 1, "title": "Cannot login from mobile", "description": "OAuth redirect fails on iOS", "status": "open", "priority": "high", "assignee": "Alice", "createdAt": "2025-01-01T10:00:00Z", "updatedAt": "2025-01-02T09:00:00Z"},
+    {"id": 2, "title": "Button misaligned on homepage", "description": "CSS issue on Safari", "status": "in_progress", "priority": "medium", "assignee": "Bob", "createdAt": "2025-02-03T12:00:00Z", "updatedAt": "2025-02-05T12:30:00Z"},
+    {"id": 3, "title": "Export CSV includes hidden columns", "description": "Respect visible columns", "status": "open", "priority": "low", "assignee": "Cara", "createdAt": "2025-03-10T08:15:00Z", "updatedAt": "2025-03-10T08:15:00Z"},
+    {"id": 4, "title": "API returns 500 for large payloads", "description": "Investigate memory usage", "status": "closed", "priority": "high", "assignee": "Dana", "createdAt": "2025-04-20T14:00:00Z", "updatedAt": "2025-04-22T16:45:00Z"},
+    {"id": 5, "title": "Dark mode not persisted", "description": "LocalStorage key mismatch", "status": "in_progress", "priority": "medium", "assignee": "Evan", "createdAt": "2025-05-05T09:30:00Z", "updatedAt": "2025-05-06T10:00:00Z"}
+  ]
+}

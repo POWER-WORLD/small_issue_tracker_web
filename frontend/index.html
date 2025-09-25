@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Issue Tracker</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<header>
+		<h1>Issue Tracker</h1>
+	</header>
+	<main>
+		<section class="controls">
+			<div class="search">
+				<input id="search" type="text" placeholder="Search by title..." />
+				<button id="searchBtn">Search</button>
+			</div>
+			<div class="filters">
+				<select id="statusFilter">
+					<option value="">All Statuses</option>
+					<option value="open">Open</option>
+					<option value="in_progress">In Progress</option>
+					<option value="closed">Closed</option>
+				</select>
+				<select id="priorityFilter">
+					<option value="">All Priorities</option>
+					<option value="low">Low</option>
+					<option value="medium">Medium</option>
+					<option value="high">High</option>
+				</select>
+				<input id="assigneeFilter" type="text" placeholder="Assignee" />
+				<button id="clearFilters">Clear</button>
+			</div>
+			<div class="actions">
+				<button id="createIssueBtn">Create Issue</button>
+			</div>
+		</section>
+
+		<section class="table-container">
+			<table id="issuesTable">
+				<thead>
+					<tr>
+						<th data-sort="id">ID</th>
+						<th data-sort="title">Title</th>
+						<th data-sort="status">Status</th>
+						<th data-sort="priority">Priority</th>
+						<th data-sort="assignee">Assignee</th>
+						<th data-sort="updatedAt">Updated</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</section>
+
+		<section class="pagination">
+			<button id="prevPage">Prev</button>
+			<span id="pageInfo"></span>
+			<button id="nextPage">Next</button>
+			<select id="pageSize">
+				<option value="5">5</option>
+				<option value="10" selected>10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+			</select>
+		</section>
+	</main>
+
+	<!-- Create/Edit Modal -->
+	<div id="modal" class="modal hidden">
+		<div class="modal-content">
+			<h2 id="modalTitle">Create Issue</h2>
+			<label>Title <input id="formTitle" type="text" /></label>
+			<label>Description <textarea id="formDescription"></textarea></label>
+			<label>Status
+				<select id="formStatus">
+					<option value="open">Open</option>
+					<option value="in_progress">In Progress</option>
+					<option value="closed">Closed</option>
+				</select>
+			</label>
+			<label>Priority
+				<select id="formPriority">
+					<option value="low">Low</option>
+					<option value="medium" selected>Medium</option>
+					<option value="high">High</option>
+				</select>
+			</label>
+			<label>Assignee <input id="formAssignee" type="text" /></label>
+			<div class="modal-actions">
+				<button id="saveIssue">Save</button>
+				<button id="cancelModal">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Detail Drawer -->
+	<aside id="drawer" class="drawer hidden">
+		<div class="drawer-content">
+			<h3>Issue Detail</h3>
+			<pre id="detailJson"></pre>
+			<button id="closeDrawer">Close</button>
+		</div>
+	</aside>
+
+	<script src="app.js"></script>
+</body>
+</html>
