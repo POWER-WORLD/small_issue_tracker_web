@@ -12,6 +12,13 @@ Small Issue Tracker Web is a lightweight full-stack issue tracker with a FastAPI
 - Delete issues
 - View issue details in a side drawer
 
+## screenshots
+
+![Home page with issue list](./images/sc1.png)
+![Issue details drawer](./images/sc2.png)
+![Edit issue form](./images/sc3.png)
+
+
 ## Tech stack
 
 - Backend: FastAPI, Pydantic
