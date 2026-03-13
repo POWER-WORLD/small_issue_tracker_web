@@ -132,3 +132,12 @@ class IssueStore:
 					self._save()
 					return Issue(**updated)
 		return None
+
+	def delete_issue(self, issue_id: int) -> bool:
+		with self._lock:
+			for idx, i in enumerate(self._issues):
+				if i.get("id") == issue_id:
+					del self._issues[idx]
+					self._save()
+					return True
+		return False

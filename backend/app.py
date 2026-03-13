@@ -93,6 +93,14 @@ def update_issue(issue_id: int, payload: IssueUpdate):
 	return updated
 
 
+@app.delete("/issues/{issue_id}", status_code=204)
+def delete_issue(issue_id: int):
+	deleted = store.delete_issue(issue_id)
+	if not deleted:
+		raise HTTPException(status_code=404, detail="Issue not found")
+	return Response(status_code=204)
+
+
 # For `python -m backend.app` local run convenience
 if __name__ == "__main__":
 	import uvicorn

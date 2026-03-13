@@ -71,13 +71,17 @@
 				<td>${it.priority}</td>
 				<td>${escapeHtml(it.assignee || '')}</td>
 				<td>${fmtDate(it.updatedAt)}</td>
-				<td><button data-edit="${it.id}">Edit</button></td>
+				<td class="row-actions">
+					<button data-edit="${it.id}">Edit</button>
+					<button data-delete="${it.id}" class="danger">Delete</button>
+				</td>
 			`;
 			tr.addEventListener('click', (e) => {
-				if ((e.target)?.dataset?.edit) return; // do not trigger detail on edit click
+				if ((e.target)?.dataset?.edit || (e.target)?.dataset?.delete) return; // do not trigger detail on action clicks
 				openDetail(it);
 			});
 			tr.querySelector('button[data-edit]')?.addEventListener('click', () => openEdit(it));
+			tr.querySelector('button[data-delete]')?.addEventListener('click', () => removeIssue(it));
 			els.tableBody.appendChild(tr);
 		}
 	}
@@ -153,6 +157,20 @@
 			if (!res.ok) { alert('Failed to update'); return; }
 		}
 		closeModal();
+		refresh();
+	}
+
+	async function removeIssue(it) {
+		const confirmed = window.confirm(`Delete issue #${it.id}: ${it.title}?`);
+		if (!confirmed) return;
+		const res = await fetch(API(`/issues/${it.id}`), { method: 'DELETE' });
+		if (!res.ok) {
+			alert('Failed to delete');
+			return;
+		}
+		if (state.total > 1 && (state.page - 1) * state.pageSize >= (state.total - 1) && state.page > 1) {
+			state.page -= 1;
+		}
 		refresh();
 	}
 
